@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>紙めくりアニメーション</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- header--- -->
+  <header id="header">
+    <div class="container header-container">
+      <a href="#fv" class="logo-link">
+        <img src="img/logo.png" alt="ロゴ" class="logo">
+      </a>
+      <div class="header-cta">
+        <a href="#check">Check</a>
+        <a href="#space">Space</a>
+        <a href="#menu">Menu</a>
+        <a href="#access">Access</a>
+        <a href="#" class="sns-link">
+          <img src="img/sns.png" alt="sns" class="sns">
+        </a>
+      </div>
+      <button class="hamburger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- fv----- -->
+  <div class="fv-container" id="fv">
+    <h1>今のあなたに、<span class="break">そっと寄り添うドリンクを。</span></h1>
+
+    <div class="drop-container">
+      <div class="drop"></div>
+    </div>
+  </div>
+  <!-- hero----- -->
+  <div class="hero-container">
+    <h1>こころ・チューニング・カフェ とは</h1>
+    <p>
+      自律神経の状態に寄り添う、<span class="break">パーソナライズ型の癒しカフェ。</span><br>
+      <br>
+      勉強・仕事・育児・情報の洪水——<br>
+      現代の暮らしは、自律神経を乱しやすい<span class="break">環境に満ちています。</span><br>
+      そんな日常の中で、<span class="break">カフェという身近な空間を通して、</span><br>
+      “自分に向き合い、自分を整える”時間を<span class="break">持ってみませんか？</span><br>
+      <br>
+      あなたがあなた自身を大切にする、静かなひととき。<br>
+      心の呼吸を、そっと取り戻せる場所<span class="break">でありたいと願っています。</span>
+    </p>
+  </div>
+
+  <!-- check----- -->
+  <div class="gradation-bg"></div>
+  <div class="check-container" id="check">
+    <div class="check">
+      <div class="title">
+        <h1>今のあなたの、<span class="break">心とドリンクを診断しませんか？</span></h1>
+        <!-- <h1 class="check-p-mobile">今のあなたの、<br>心とドリンクを診断しませんか？</h1> -->
+        <p class="lead">2つの質問に答えるだけの簡易診断です。</p>
+      </div>
+
+      <!-- STEP 1 -->
+      <section id="step1" class="card step active" aria-label="質問1">
+        <h2 class="q-title">今の気分にいちばん近いものは？</h2>
+        <div class="choices" role="group" aria-label="気分の選択">
+          <label class="choice">
+            <input type="radio" name="mood" value="tired" />
+            <span class="dot" aria-hidden="true"></span>
+            <span class="label">なんだか疲れている</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="mood" value="anxious" />
+            <span class="dot" aria-hidden="true"></span>
+            <span class="label">少し不安がある</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="mood" value="low" />
+            <span class="dot" aria-hidden="true"></span>
+            <span class="label">気持ちが沈みがち</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="mood" value="calm" />
+            <span class="dot" aria-hidden="true"></span>
+            <span class="label">落ち着きを深めたい</span>
+          </label>
+        </div>
+        <div class="actions">
+          <button class="btn" id="toStep2" disabled>次へ</button>
+        </div>
+      </section>
+
+      <!-- STEP 2 -->
+      <section id="step2" class="card step" aria-label="質問2">
+        <h2 class="q-title">今、体が求めている感覚は？</h2>
+        <div class="choices" role="group" aria-label="感覚の選択">
+          <label class="choice">
+            <input type="radio" name="need" value="warm" />
+            <span class="dot" aria-hidden="true"></span>
+            <span class="label">あたたかさ</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="need" value="fresh" />
+            <span class="dot" aria-hidden="true"></span>
+            <span class="label">すっきり感</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="need" value="sweet" />
+            <span class="dot" aria-hidden="true"></span>
+            <span class="label">やさしい甘さ</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="need" value="aroma" />
+            <span class="dot" aria-hidden="true"></span>
+            <span class="label">深呼吸したくなる香り</span>
+          </label>
+        </div>
+        <div class="actions">
+          <button class="btn sub" id="back1">戻る</button>
+          <button class="btn" id="showResult" disabled>結果を見る</button>
+        </div>
+      </section>
+
+      <!-- RESULT -->
+      <section id="result" class="card step" aria-live="polite" aria-label="診断結果">
+        <div class="result">
+          <h2 class="q-title">あなたに寄り添う一杯は…</h2>
+          <div class="drink" id="drinkCard" hidden>
+            <h3 class="drink-name" id="drinkName">ドリンク名</h3>
+            <div id="tags"></div>
+            <p class="desc" id="drinkDesc">説明</p>
+            <div class="actions">
+              <button class="btn" id="retry">もう一度診断する</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <div class="gradation-bg2"></div>
+    
+  <!-- space----- -->
+  <div class="space-container" id="space">
+    <div class="controls">
+      <h1>—— あなただけの空間を。——</h1>
+      <p>マッピングを選ぶ</p>
+      <div class="choose">
+        <label><input type="radio" name="bg" value="sea" checked> 海</label>
+        <label><input type="radio" name="bg" value="stars"> 星</label>
+        <label><input type="radio" name="bg" value="river"> 川</label>
+      </div>
+      <div class="sound-control">
+        <input type="checkbox" id="sound-toggle" checked>
+        <label for="sound-toggle">BGMをミュート</label>
+      </div>
+    </div>
+    <div class="space">
+      <video id="bg-video" autoplay muted loop playsinline>
+        <source src="img/sea.mp4" type="video/mp4">
+      </video>
+      <h2 class="boxs-text">本カフェだけの３つのパーソナル空間をご提供。</h2>
+      <div class="boxs">
+        <div class="box">
+          <img src="img/box1.png" alt="半個室の画像">
+          <div class="text">
+            <h2>半個室</h2>
+            <p>自分だけの時間</p>
+          </div>
+        </div>
+        <div class="box">
+          <img src="img/box2.png" alt="静かな空間の画像">
+          <div class="text">
+            <h2>静かな空間</h2>
+            <p>少しの音楽のみ</p>
+          </div>
+        </div>
+        <div class="box">
+          <img src="img/box3.png" alt="プロジェクションマッピングの画像">
+          <div class="text">
+            <h2>マッピング</h2>
+            <p>パーソナライズされた映像</p>
+          </div>
+        </div>
+        <div class="slider-btn">
+          <button class="space-slider-btn" id="space-prev">&lt;</button>
+          <button class="space-slider-btn" id="space-next">&gt;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- menu----- -->
+  <div class="menu-container" id="menu">
+    <div class="flipbook" id="flipbook">
+      <div class="page page-1"></div>
+      <div class="page page-2"></div>
+      <div class="page page-3"></div>
+      <div class="page page-4"></div>
+    </div>
+
+    <div class="buttons">
+      <button id="prev-button">戻る</button>
+      <button id="next-button">次へ</button>
+    </div>
+  </div>
+  <div class="gradation-bg3"></div>
+
+  <!-- news----- -->
+  <div class="news-container" id="news">
+    <hr style="border: 1px solid rgb(236, 236, 236); width: 50%;">
+    <div class="news">
+      <h1>お知らせ</h1>
+      <!-- 1ページ目 -->
+      <div class="news-page" data-page="1">
+        <a href="news.html" class="news-item">
+          <p class="date">2025.09.14</p>
+          <p class="text">
+            こころ・チューニング・カフェをOPENして2周年記念<br>
+            日頃の感謝を込めて、2025.10.01ご来店の方には、<br>
+            新作の『まんまる生チョコ』をプレゼント！
+          </p>
+        </a>
+        <a href="news_2.html" class="news-item">
+          <p class="date">2025.08.01</p>
+          <p class="text">こころ・チューニング・カフェ限定！<br>
+            『ブレンド紅茶4種セット』の店頭販売を開始しました。
+          </p>
+        </a>
+      </div>
+      <!-- 2ページ目 -->
+      <div class="news-page" data-page="2">
+        <a href="news_3.html" class="news-item">
+          <p class="date">2025.07.15</p>
+          <p class="text">
+            夏季限定メニュー『涼風ミントソーダ』が登場！<br>
+            暑い夏にぴったりの爽やかな一杯です。
+          </p>
+        </a>
+        <a href="news_4.html" class="news-item">
+          <p class="date">2025.06.20</p>
+          <p class="text">
+            店内BGMリニューアルのお知らせ<br>
+            よりリラックスできる空間でお過ごしください。
+          </p>
+        </a>
+      </div>
+    </div>
+    <div class="pagination">
+      <a href="#" class="page-num" data-page="1">1</a>
+      <a href="#" class="page-num" data-page="2">2</a>
+    </div>
+  </div>
+
+  <!-- access----- -->
+  <div class="access-container" id="access">
+    <div class="access">
+      <div class="access-text">
+        <h1>こころ・チューニング・カフェ</h1>
+        <p>Open 15:00 / Close21:00<br>
+          <br>
+          東京都渋谷区代々木4丁目-2 CAFEビル1F<br>
+          MAIL：info@kokoro.tuning.cafe
+        </p>
+      </div>
+      <iframe class="map" title="こころ・チューニング・カフェの場所" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.584892853781!2d139.6984537!3d35.6872219!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188cd1cea63067%3A0x9e2e655fd233ed53!2z44CSMTUxLTAwNTMg5p2x5Lqs6YO95riL6LC35Yy65Luj44CF5pyo77yS5LiB55uu77yU4oiS77ySIOaZr-mbsuiNmA!5e0!3m2!1sja!2sjp!4v1758437961366!5m2!1sja!2sjp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+
+  <!-- footer---- -->
+   <footer id="footer">
+    <a href="#fv" class="logo-link">
+      <img src="img/logo_white.png" alt="ロゴ" class="logo">
+    </a>
+    <div class="footer-cta">
+      <a href="#check">Check</a>
+      <a href="#space">Space</a>
+      <a href="#menu">Menu</a>
+      <a href="#access">Access</a>
+    </div>
+    <a href="#" class="sns-link">
+      <img src="img/sns.png" alt="sns" class="sns">
+    </a>
+    <p>© 2025Kokoro Tuning Café All rights reserved.</p>
+   </footer>
+
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="js/turn.min.js"></script>
+  <!-- Ripples -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
